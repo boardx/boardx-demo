@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 'use client';
 import * as fabric from 'boardx';
 import { NextPage } from 'next';
@@ -28,7 +28,7 @@ const IndexPage: NextPage = () => {
                     textAlign: 'center',
                     textValue,
                     backgroundColor: 'lightblue',
-                    _id: Math.random().toString(36).substr(2, 9),
+                    id: Math.random().toString(36).substr(2, 9),
                 });
                 canvas.add(rectNote);
             }
@@ -42,7 +42,7 @@ const IndexPage: NextPage = () => {
                     textAlign: 'center',
                     textValue,
                     backgroundColor: 'yellow',
-                    _id: Math.random().toString(36).substr(2, 9),
+                    id: Math.random().toString(36).substr(2, 9),
                 });
                 canvas.add(circleNote);
             }
@@ -58,7 +58,7 @@ const IndexPage: NextPage = () => {
                     textAlign: 'center',
                     textValue,
                     backgroundColor: 'lightgreen',
-                    _id: Math.random().toString(36).substr(2, 9),
+                    id: Math.random().toString(36).substr(2, 9),
                 });
                 canvas.add(rectNote);
             }

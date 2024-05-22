@@ -434,7 +434,7 @@ export function recoverEventsByInteractionMode() {
 //     // Initialized note properties
 //   }
 
-//   note._id = UtilityService.getInstance().generateWidgetID();
+//   note.id = UtilityService.getInstance().generateWidgetID();
 //   // Create and add widget from note properties
 //   // Rest of the function
 // }
@@ -443,7 +443,7 @@ export function recoverEventsByInteractionMode() {
 function onTextChanged(e) {
   e.target.changed = true;
   //syncObjectChangeToRemote
-  // canvas.syncObjectChangeToRemote(e.target._id, { text: e.target.text });
+  // canvas.syncObjectChangeToRemote(e.target.id, { text: e.target.text });
 }
 
 export function onTextEditingExited(event) {
@@ -452,7 +452,7 @@ export function onTextEditingExited(event) {
   const { target } = event;
 
   // Get the widget with the corresponding id from the widget list
-  const widget = canvas.findById(target._id);
+  const widget = canvas.findById(target.id);
 
   // If the event target hasn't changed, return immediately
   if (!event.target.changed) return;

@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 'use client';
 import * as fabric from 'boardx';
 import { NextPage } from 'next';

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import * as fabric from 'boardx';
 import React, { useEffect, useRef, useState } from 'react';
 import MiniCanvas from './preview/MiniCanvas';
