@@ -447,12 +447,12 @@ function onTextChanged(e) {
 }
 
 export function onTextEditingExited(event) {
-
+  return;
   // Extract target from the event object
   const { target } = event;
 
   // Get the widget with the corresponding id from the widget list
-  const widget = canvas.findById(target.id);
+  const widget = null; //canvas.findById(target.id);
 
   // If the event target hasn't changed, return immediately
   if (!event.target.changed) return;
@@ -568,6 +568,7 @@ export function initializeCanvasEvents(canvas) {
 
   // Filter out specific object types during group selection
   canvas.on('selection:created', function (e) {
+    return;
     var activeSelection = canvas.getActiveObject();
 
     if (activeSelection.type === 'activeselection') {

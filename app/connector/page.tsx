@@ -16,7 +16,7 @@ const IndexPage: NextPage = () => {
     const ref = useRef<fabric.Canvas>(null);
     const [mouseInfo, setMouseInfo] = useState<string[]>([]);
     //@ts-ignore
-    window.fabric = fabric
+
     const onLoad = useCallback(
         (canvas: fabric.Canvas) => {
             canvas.setDimensions({
