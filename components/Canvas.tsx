@@ -1,5 +1,5 @@
 //@ts-nocheck
-import * as fabric from 'boardx';
+import * as fabric from '@boardxus/canvasx';
 import React, { useEffect, useRef, useState } from 'react';
 import MiniCanvas from './preview/MiniCanvas';
 
