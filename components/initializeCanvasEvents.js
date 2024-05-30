@@ -1,4 +1,4 @@
-import { X_Connector } from "boardx";
+import { X_Connector } from "@boardxus/canvasx";
 
 
 
