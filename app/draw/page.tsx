@@ -31,7 +31,7 @@ const IndexPage: NextPage = () => {
 
             const textValue = 'CanvasX Demo Drawing';
 
-            canvas.add(new fabric.RectNotes(textValue, {
+            canvas.add(new fabric.XRectNotes(textValue, {
                 originX: 'center',
                 top: 220,
                 left: 200,

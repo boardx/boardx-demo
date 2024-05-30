@@ -1,4 +1,4 @@
-import { X_Connector } from "@boardxus/canvasx";
+import { XConnector } from "@boardxus/canvasx";
 
 
 
@@ -576,7 +576,7 @@ export function initializeCanvasEvents(canvas) {
 
       // Filter out the connectors
       var filteredObjects = objects.filter(function (obj) {
-        return !(obj instanceof X_Connector);
+        return !(obj instanceof XConnector);
       });
 
       if (filteredObjects.length > 0) {

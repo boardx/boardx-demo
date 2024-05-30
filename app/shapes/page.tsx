@@ -21,8 +21,10 @@ const IndexPage: NextPage = () => {
 
             // Create 10 RectNotes
             for (let i = 0; i < 5; i++) {
-                const rectNote = new fabric.ShapeNotes(textValue, {
+                const rectNote = new fabric.XShapeNotes(textValue, {
                     originX: 'center',
+                    originY: 'center',
+
                     top: 220,
                     left: 200 + i * 250,
                     textAlign: 'center',
@@ -38,8 +40,10 @@ const IndexPage: NextPage = () => {
 
             // Create 10 RectNotes
             for (let i = 6; i < 11; i++) {
-                const rectNote = new fabric.ShapeNotes(textValue, {
+                const rectNote = new fabric.XShapeNotes(textValue, {
                     originX: 'center',
+                    originY: 'center',
+
                     top: 220 + 300,
                     left: 200 + (i - 6) * 250,
                     textAlign: 'center',
@@ -56,7 +60,7 @@ const IndexPage: NextPage = () => {
 
             // // Create 10 CircleNotes
             // for (let i = 0; i < 10; i++) {
-            //     const circleNote = new fabric.CircleNotes(textValue, {
+            //     const circleNote = new fabric.XCircleNotes(textValue, {
             //         originX: 'center',
             //         top: 520 + i * 10,
             //         left: 520 + i * 10,
@@ -69,7 +73,7 @@ const IndexPage: NextPage = () => {
 
             // // Create 10 more RectNotes with different dimensions
             // for (let i = 0; i < 10; i++) {
-            //     const rectNote = new fabric.RectNotes(textValue, {
+            //     const rectNote = new fabric.XRectNotes(textValue, {
             //         originX: 'center',
             //         top: 200 + i * 10,
             //         left: 600 + i * 10,

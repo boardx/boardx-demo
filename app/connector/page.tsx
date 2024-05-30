@@ -36,13 +36,14 @@ const IndexPage: NextPage = () => {
 
                     // if (connectDock1[i] === 'center' && connectDock2[j] === 'center') continue;
                     // if (connectDock1[i] !== 'center' && connectDock2[j] !== 'center') continue;
-                    let rectNoteA: fabric.RectNotes;
-                    let rectNoteB: fabric.RectNotes;
-                    rectNoteA = new fabric.RectNotes(textValue, {
+                    let rectNoteA: fabric.XRectNotes;
+                    let rectNoteB: fabric.XRectNotes;
+                    rectNoteA = new fabric.XRectNotes(textValue, {
                         originX: 'center',
                         top: 500 + i * 300,
                         left: 700 + j * 900,
                         textAlign: 'center',
+                        originY: 'center',
 
                         connectors: [],
                         backgroundColor: 'lightblue',
@@ -51,11 +52,12 @@ const IndexPage: NextPage = () => {
                     canvas.add(rectNoteA);
 
 
-                    rectNoteB = new fabric.RectNotes(textValue, {
+                    rectNoteB = new fabric.XRectNotes(textValue, {
                         originX: 'center',
                         top: 700 + i * 300,
                         left: 1100 + j * 900,
                         textAlign: 'center',
+                        originY: 'center',
 
                         connectors: [],
                         backgroundColor: 'lightblue',
@@ -101,7 +103,7 @@ const IndexPage: NextPage = () => {
 
 
 
-                    const curve = new fabric.X_Connector(point1, point2, cp1, cp2, style, {
+                    const curve = new fabric.XConnector(point1, point2, cp1, cp2, style, {
                         stroke: 'black',
                         strokeWidth: 2,
                         fill: '',
@@ -133,10 +135,11 @@ const IndexPage: NextPage = () => {
 
 
             // // Create 10 RectNotes
-            const rectNote1 = new fabric.RectNotes(textValue, {
+            const rectNote1 = new fabric.XRectNotes(textValue, {
                 originX: 'center',
                 top: 100,
                 left: 100,
+                originY: 'center',
 
                 connectors: [],
                 textAlign: 'center',
@@ -146,10 +149,11 @@ const IndexPage: NextPage = () => {
             });
             canvas.add(rectNote1);
 
-            const rectNote2 = new fabric.RectNotes(textValue, {
+            const rectNote2 = new fabric.XRectNotes(textValue, {
                 originX: 'center',
                 top: 300,
                 left: 300,
+                originY: 'center',
 
                 connectors: [],
                 textAlign: 'center',
@@ -169,7 +173,7 @@ const IndexPage: NextPage = () => {
 
             cp1 = rectNote1.calculateControlPoint(rectNote1.getBoundingRect(), point1);
             cp2 = rectNote2.calculateControlPoint(rectNote2.getBoundingRect(), point2);
-            const curve = new fabric.X_Connector(point1, point2, cp1, cp2, style, {
+            const curve = new fabric.XConnector(point1, point2, cp1, cp2, style, {
                 stroke: 'black',
                 strokeWidth: 2,
                 fill: '',
@@ -297,7 +301,7 @@ const IndexPage: NextPage = () => {
             }
             // // Create 10 CircleNotes
             // for (let i = 0; i < 10; i++) {
-            //     const circleNote = new fabric.CircleNotes(textValue, {
+            //     const circleNote = new fabric.XCircleNotes(textValue, {
             //         originX: 'center',
             //         top: 520 + i * 10,
             //         left: 520 + i * 10,
@@ -311,7 +315,7 @@ const IndexPage: NextPage = () => {
 
             // // Create 10 more RectNotes with different dimensions
             // for (let i = 0; i < 10; i++) {
-            //     const rectNote = new fabric.RectNotes(textValue, {
+            //     const rectNote = new fabric.XRectNotes(textValue, {
             //         originX: 'center',
             //         top: 200 + i * 10,
             //         left: 600 + i * 10,
