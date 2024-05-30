@@ -76,3 +76,6 @@ export const Canvas = React.forwardRef<
     <MiniCanvas canvas={canvas} />
   </>
 });
+
+
+export default Canvas;

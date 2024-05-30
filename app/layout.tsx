@@ -6,7 +6,9 @@ import Head from 'next/head';
 import { Container, Navbar } from 'react-bootstrap';
 import { Divider, Link, Sheet } from '@mui/joy';
 
-export default function MyApp({ children }: { children: React.ReactNode }) {
+
+
+  export default function MyApp({ children }: { children: React.ReactNode }) {
 
     return (
         <html>
