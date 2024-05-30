@@ -227,7 +227,7 @@ const IndexPage: NextPage = () => {
                 }));
             });
 
-            canvas.add(new fabric.Textbox(' (0,0)', {
+            canvas.add(new fabric.XTextbox(' (0,0)', {
                 left: 0,
                 top: 0,
                 fontSize: 20,
