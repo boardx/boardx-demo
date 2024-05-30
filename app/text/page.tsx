@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 'use client';
 import * as fabric from '@boardxus/canvasx';
 import { NextPage } from 'next';
@@ -9,13 +9,13 @@ import { Canvas } from '../../components/Canvas';
 
 
 const IndexPage: NextPage = () => {
-    const ref = useRef<fabric.Canvas>(null);
+    const ref = useRef<fabric.XCanvas>(null);
 
     const onLoad = useCallback(
-        (canvas: fabric.Canvas) => {
+        (canvas: fabric.XCanvas) => {
             canvas.setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight - 60,
+                width: document.documentElement.clientWidth,
+                height: document.documentElement.clientHeight - 60,
             });
             const textValue = 'CanvasX DemoCanvasX DemoCanvasX DemoCanvasX Demo';
 
@@ -24,7 +24,6 @@ const IndexPage: NextPage = () => {
                 const rectNote = new fabric.XTextbox(textValue, {
                     originX: 'center',
                     originY: 'center',
-
                     top: 220 + i * 60,
                     left: 200 + i * 20,
                     width: 500,

@@ -1,4 +1,3 @@
-//@ts-nocheck
 'use client';
 import { Typography, Card, Grid, Box, Button } from '@mui/joy';
 import { useRouter } from 'next/navigation';
@@ -37,7 +36,7 @@ const Homepage = () => {
                     </Card>
                 </Grid >
 
-                <Grid item xs={12} md={4} component="div" >
+                <Grid xs={12} md={4} component="div" >
                     <Card variant="outlined">
                         <Box textAlign="center" p={2}>
                             <Typography level="h2">Shapes</Typography>
@@ -48,7 +47,7 @@ const Homepage = () => {
                     </Card>
                 </Grid>
 
-                <Grid item xs={12} md={4} component="div" >
+                <Grid xs={12} md={4} component="div" >
                     <Card variant="outlined">
                         <Box textAlign="center" p={2}>
                             <Typography level="h2">Connector</Typography>

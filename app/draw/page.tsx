@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 'use client';
 import * as fabric from '@boardxus/canvasx';
 import { NextPage } from 'next';
@@ -17,8 +17,10 @@ const IndexPage: NextPage = () => {
     const onLoad = useCallback(
         (canvas: fabric.Canvas) => {
             canvas.setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight - 60,
+                width: document.documentElement.clientWidth
+                ,
+                height: document.documentElement.clientHeight
+                    - 60,
             });
 
             canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
@@ -36,7 +38,7 @@ const IndexPage: NextPage = () => {
                 top: 220,
                 left: 200,
                 textAlign: 'center',
-                textValue,
+
                 backgroundColor: 'lightblue',
 
                 id: Math.random().toString(36).substr(2, 9),

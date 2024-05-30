@@ -1,21 +1,20 @@
-//@ts-nocheck
+
 'use client';
 import * as fabric from '@boardxus/canvasx';
 import { NextPage } from 'next';
 import { useRef, useCallback } from 'react';
 import { Canvas } from '../../components/Canvas';
-// import { RectNotes } from '../../../../src/shapes/RectNotes';
-
-
 
 const IndexPage: NextPage = () => {
-    const ref = useRef<fabric.Canvas>(null);
+    const ref = useRef<fabric.XCanvas>(null);
 
     const onLoad = useCallback(
-        (canvas: fabric.Canvas) => {
+        (canvas: fabric.XCanvas) => {
             canvas.setDimensions({
-                width: window.innerWidth,
-                height: window.innerHeight - 60,
+                width: document.documentElement.clientWidth
+                ,
+                height: document.documentElement.clientHeight
+                    - 60,
             });
             const textValue = 'CanvasX Demo';
 
@@ -23,12 +22,10 @@ const IndexPage: NextPage = () => {
             for (let i = 0; i < 10; i++) {
                 const rectNote = new fabric.XRectNotes(textValue, {
                     originX: 'center',
+                    originY: 'center',
                     top: 220 + i * 20,
                     left: 200 + i * 20,
                     textAlign: 'center',
-                    originY: 'center',
-
-                    textValue,
                     backgroundColor: 'lightblue',
                     id: Math.random().toString(36).substr(2, 9),
                 });
@@ -37,14 +34,13 @@ const IndexPage: NextPage = () => {
 
             // Create 10 CircleNotes
             for (let i = 0; i < 10; i++) {
-                const circleNote = new fabric.XCircleNotes(textValue, {
+                const circleNote = new fabric.XRectNotes(textValue, {
                     originX: 'center',
+                    originY: 'center',
                     top: 520 + i * 10,
                     left: 520 + i * 10,
                     textAlign: 'center',
-                    originY: 'center',
 
-                    textValue,
                     backgroundColor: 'yellow',
                     id: Math.random().toString(36).substr(2, 9),
                 });
@@ -53,16 +49,15 @@ const IndexPage: NextPage = () => {
 
             // Create 10 more RectNotes with different dimensions
             for (let i = 0; i < 10; i++) {
-                const rectNote = new fabric.XRectNotes(textValue, {
+                const rectNote = new fabric.XCircleNotes(textValue, {
                     originX: 'center',
+                    originY: 'center',
                     top: 200 + i * 10,
                     left: 600 + i * 10,
                     width: 138,
                     height: 138,
                     textAlign: 'center',
-                    originY: 'center',
 
-                    textValue,
                     backgroundColor: 'lightgreen',
                     id: Math.random().toString(36).substr(2, 9),
                 });
