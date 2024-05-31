@@ -5,7 +5,7 @@ import MiniCanvas from './preview/MiniCanvas';
 
 const DEV_MODE = process.env.NODE_ENV === 'development';
 
-import { initializeCanvasEvents } from './initializeCanvasEvents';
+import { initializeCanvasEvents } from '@boardxus/canvasx';
 
 declare global {
   var canvas: fabric.Canvas | undefined;
