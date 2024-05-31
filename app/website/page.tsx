@@ -22,17 +22,17 @@ const IndexPage: NextPage = () => {
             // const textValue = 'CanvasX Demo';
 
 
-            const website = new fabric.XURL('elementId', {
-                top: 220,
-                left: 200,
-                cornerColor: 'red',
-                cornerSize: 10,
-                title: 'this is a title',
-            });
+            // const website = new fabric.XURL('elementId', {
+            //     top: 220,
+            //     left: 200,
+            //     cornerColor: 'red',
+            //     cornerSize: 10,
+            //     title: 'this is a title',
+            // });
 
-            await website.setSrc('https://knowledge.wharton.upenn.edu/wp-content/uploads/2023/03/3.15.23-scott-snyder-esg-corporate-innovation-GettyImages-1410816388-900x605.png');
+            // await website.setSrc('https://knowledge.wharton.upenn.edu/wp-content/uploads/2023/03/3.15.23-scott-snyder-esg-corporate-innovation-GettyImages-1410816388-900x605.png');
 
-            canvas.add(website);
+            // canvas.add(website);
             canvas.renderAll();
             // // Create 10 RectNotes
             // for (let i = 0; i < 5; i++) {

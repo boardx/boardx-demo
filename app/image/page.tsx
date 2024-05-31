@@ -20,31 +20,32 @@ const IndexPage: NextPage = () => {
             });
             // const textValue = 'CanvasX Demo';
 
-            const image = new fabric.XImage('elementId', {
-                top: 220,
-                left: 200,
-                width: 150,
-                height: 150,
-                cornerColor: 'red',
-                cornerSize: 10,
+            // const src = 'https://th.bing.com/th/id/OIP.WEKMZBVS3dCZ3PT9NU9UKAAAAA?rs=1&pid=ImgDetMain';
+            // const image = new fabric.XImage(src, {
+            //     top: 220,
+            //     left: 200,
+            //     width: 150,
+            //     height: 150,
+            //     cornerColor: 'red',
+            //     cornerSize: 10,
 
 
-            });
+            // });
 
-            await image.setSrc('https://th.bing.com/th/id/OIP.WEKMZBVS3dCZ3PT9NU9UKAAAAA?rs=1&pid=ImgDetMain')
+            // await image.setSrc(src)
 
-            canvas.add(image);
+            // canvas.add(image);
 
-            const image2 = new fabric.XImage('elementId', {
-                top: 220,
-                left: 600,
-                width: 150,
-                height: 150,
-            });
+            // const image2 = new fabric.XImage('elementId', {
+            //     top: 220,
+            //     left: 600,
+            //     width: 150,
+            //     height: 150,
+            // });
 
-            await image2.setSrc(' https://knowledge.wharton.upenn.edu/wp-content/uploads/2023/03/3.15.23-scott-snyder-esg-corporate-innovation-GettyImages-1410816388-900x605.png')
+            // await image2.setSrc(' https://knowledge.wharton.upenn.edu/wp-content/uploads/2023/03/3.15.23-scott-snyder-esg-corporate-innovation-GettyImages-1410816388-900x605.png')
 
-            canvas.add(image2);
+            // canvas.add(image2);
 
             canvas.renderAll();
             // // Create 10 RectNotes
