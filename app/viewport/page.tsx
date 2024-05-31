@@ -22,9 +22,9 @@ const IndexPage: NextPage = () => {
                     - 60,
             });
             const textValue = 'CanvasX Demo';
-            const connectDock1 = ['right', 'left', 'center'];
-            const connectDock2 = ['top', 'bottom', 'center'];
-            const connectBorder = ['left', 'right', 'top', 'bottom'];
+            // const connectDock1 = ['right', 'left', 'center'];
+            // const connectDock2 = ['top', 'bottom', 'center'];
+            // const connectBorder = ['left', 'right', 'top', 'bottom'];
 
             const style = 'curved';
 
@@ -203,7 +203,7 @@ const IndexPage: NextPage = () => {
                     const pointer = canvas.getPointer(event.e);
                     //@ts-ignore
                     const pointOnSelectedObject = canvas.getActiveObject()?.transformPointFromCanvas(pointer);
-                    textMessage.push(`(${pointOnSelectedObject.x.toFixed(2)}, ${pointOnSelectedObject.y.toFixed(2)})`)
+                    textMessage.push(`(${pointOnSelectedObject?.x.toFixed(2)}, ${pointOnSelectedObject?.y.toFixed(2)})`)
                 } else {
                     textMessage.push('------');
                 }

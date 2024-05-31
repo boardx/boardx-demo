@@ -18,7 +18,7 @@ const IndexPage: NextPage = () => {
                 height: document.documentElement.clientHeight
                     - 60,
             });
-            const textValue = 'CanvasX Demo';
+            // const textValue = 'CanvasX Demo';
 
             const image = new fabric.XImage('elementId', {
                 top: 220,

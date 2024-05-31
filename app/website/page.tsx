@@ -19,7 +19,7 @@ const IndexPage: NextPage = () => {
                 height: document.documentElement.clientHeight
                     - 60,
             });
-            const textValue = 'CanvasX Demo';
+            // const textValue = 'CanvasX Demo';
 
 
             const website = new fabric.XURL('elementId', {

@@ -4,14 +4,14 @@ import * as fabric from '@boardxus/canvasx';
 import { NextPage } from 'next';
 import { useRef, useCallback } from 'react';
 import { Canvas } from '../../components/Canvas';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 
 import { Box } from '@mui/joy';
 
 const IndexPage: NextPage = () => {
     const ref = useRef<fabric.Canvas>(null);
-    const [mouseInfo, setMouseInfo] = useState<string[]>([]);
+    // const [mouseInfo, setMouseInfo] = useState<string[]>([]);
 
     const onLoad = useCallback(
         (canvas: fabric.Canvas) => {
@@ -241,58 +241,58 @@ const IndexPage: NextPage = () => {
 
 
 
-            // Update the text object position and content based on mouse movement
-            canvas.on('mouse:move', function (event) {
-                const textMessage: string[] = [];
-                const { viewportPoint, scenePoint } = event;
-                textMessage.push('mouse point and viewport visualization')
-                textMessage.push('-------------------------------------')
+            // // Update the text object position and content based on mouse movement
+            // canvas.on('mouse:move', function (event) {
+            //     const textMessage: string[] = [];
+            //     const { viewportPoint, scenePoint } = event;
+            //     textMessage.push('mouse point and viewport visualization')
+            //     textMessage.push('-------------------------------------')
 
-                // the current window viewport
-                const viewportTransform = canvas.viewportTransform;
+            //     // the current window viewport
+            //     const viewportTransform = canvas.viewportTransform;
 
-                textMessage.push('1. Dom Viewport(viewportPoint):')
-                textMessage.push(`mouse: (${viewportPoint.x.toFixed(2)}, ${viewportPoint.y.toFixed(2)})`)
+            //     textMessage.push('1. Dom Viewport(viewportPoint):')
+            //     textMessage.push(`mouse: (${viewportPoint.x.toFixed(2)}, ${viewportPoint.y.toFixed(2)})`)
 
-                //add message to show the current mouse position on the canvas
-                textMessage.push('2. Canvas Viewport(scenePoint):')
-                textMessage.push('- matrix:' + getViewportTransformRoundNumber(viewportTransform))
-                textMessage.push(`mouse: ${scenePoint.x.toFixed(2)}, ${scenePoint.y.toFixed(2)}`)
+            //     //add message to show the current mouse position on the canvas
+            //     textMessage.push('2. Canvas Viewport(scenePoint):')
+            //     textMessage.push('- matrix:' + getViewportTransformRoundNumber(viewportTransform))
+            //     textMessage.push(`mouse: ${scenePoint.x.toFixed(2)}, ${scenePoint.y.toFixed(2)}`)
 
-                //add message to show the current mouse position on Active Object if any
-                textMessage.push('3. Active Object:')
-                if (canvas.getActiveObject()) {
-                    //@ts-ignore
-                    textMessage.push('- matrix:' + getViewportTransformRoundNumber(canvas?.getActiveObject()?.calcTransformMatrix()))
-                    const pointer = canvas.getPointer(event.e);
-                    //@ts-ignore
-                    const pointOnSelectedObject = canvas.getActiveObject()?.transformPointFromCanvas(pointer);
-                    textMessage.push(`(${pointOnSelectedObject.x.toFixed(2)}, ${pointOnSelectedObject.y.toFixed(2)})`)
-                } else {
-                    textMessage.push('------');
-                }
+            //     //add message to show the current mouse position on Active Object if any
+            //     textMessage.push('3. Active Object:')
+            //     if (canvas.getActiveObject()) {
+            //         //@ts-ignore
+            //         textMessage.push('- matrix:' + getViewportTransformRoundNumber(canvas?.getActiveObject()?.calcTransformMatrix()))
+            //         const pointer = canvas.getPointer(event.e);
+            //         //@ts-ignore
+            //         const pointOnSelectedObject = canvas.getActiveObject()?.transformPointFromCanvas(pointer);
+            //         textMessage.push(`(${pointOnSelectedObject.x.toFixed(2)}, ${pointOnSelectedObject.y.toFixed(2)})`)
+            //     } else {
+            //         textMessage.push('------');
+            //     }
 
 
-                // console.log('pointer:', pointer.x, pointer.y, 'to:', pointOnSelectedObject.toString())
+            //     // console.log('pointer:', pointer.x, pointer.y, 'to:', pointOnSelectedObject.toString())
 
-                // const canvasWidth = canvas.width * canvas.getZoom();
-                // const canvasHeight = canvas.height * canvas.getZoom();
+            //     // const canvasWidth = canvas.width * canvas.getZoom();
+            //     // const canvasHeight = canvas.height * canvas.getZoom();
 
-                // text.set({
-                //     left: canvasWidth - 10 - text.width, // Offset from the right edge of the canvas
-                //     top: 10   // Offset from the top edge of the canvas
-                // });
+            //     // text.set({
+            //     //     left: canvasWidth - 10 - text.width, // Offset from the right edge of the canvas
+            //     //     top: 10   // Offset from the top edge of the canvas
+            //     // });
 
-                setMouseInfo(textMessage);
+            //     // setMouseInfo(textMessage);
 
-                canvas.renderAll(); // Re-render the canvas
-            });
+            //     canvas.renderAll(); // Re-render the canvas
+            // });
 
-            //create a function to get viewportTransform and all numbers are rounded to 2 decimal places
-            function getViewportTransformRoundNumber(transform: fabric.TMat2D | null) {
+            // //create a function to get viewportTransform and all numbers are rounded to 2 decimal places
+            // function getViewportTransformRoundNumber(transform: fabric.TMat2D | null) {
 
-                return transform?.map((value) => value.toFixed(2)).join(', ');
-            }
+            //     return transform?.map((value) => value.toFixed(2)).join(', ');
+            // }
             // // Create 10 CircleNotes
             // for (let i = 0; i < 10; i++) {
             //     const circleNote = new fabric.XCircleNotes(textValue, {
