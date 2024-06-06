@@ -16,7 +16,7 @@ import {
   IconSpacingHorizontal,
   IconSpacingVertical,
 } from "@tabler/icons-react";
-import { XCanvas } from "../../../../../fabric";
+import { XCanvas } from "@boardxus/canvasx";
 
 
 const options = [

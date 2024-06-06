@@ -26,7 +26,7 @@ import List from "@mui/joy/List";
 import store, { RootState } from "../../redux/store";
 import { BoardService } from "../../services";
 import { changeMode } from '../../redux/features/mode.slice';
-import { XCanvas } from "../../../../../fabric";
+import { XCanvas } from "@boardxus/canvasx";
 export function MenuBar() {
   const modeType = useSelector((state: RootState) => state.mode.type);
   const { startMouseListener, endMouseListener } = useMouseActions();

@@ -1,65 +1,65 @@
 //**Fabric */
-import * as fabric from '../../../../../../fabric';
+import * as fabric from "@boardxus/canvasx";
 
 //**Redux store */
-import { changeMode } from '../../../redux/features/mode.slice';
-import { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/store';
+import { changeMode } from "../../../redux/features/mode.slice";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 //**utils */
-import { getBrushCursorWithColor } from './utils';
+import { getBrushCursorWithColor } from "./utils";
 
-import { BoardService } from '../../../services';
+import { BoardService } from "../../../services";
 
 const useDrawActions = () => {
-  const canvas: any = BoardService.getInstance().getBoard();
-  const dispatch = useDispatch();
+	const canvas: any = BoardService.getInstance().getBoard();
+	const dispatch = useDispatch();
 
-  const brushWidth = useSelector(
-    (state: RootState) => state.widget.draw.brushWidth
-  );
+	const brushWidth = useSelector(
+		(state: RootState) => state.widget.draw.brushWidth
+	);
 
-  const brushColor = useSelector(
-    (state: RootState) => state.widget.draw.brushColor
-  );
+	const brushColor = useSelector(
+		(state: RootState) => state.widget.draw.brushColor
+	);
 
-  const handleDrawBefore = () => {
-    const cursor = getBrushCursorWithColor(brushColor);
+	const handleDrawBefore = () => {
+		const cursor = getBrushCursorWithColor(brushColor);
 
-    canvas.freeDrawingCursor = cursor;
+		canvas.freeDrawingCursor = cursor;
 
-    if (!canvas.freeDrawingBrush) {
-      canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
-    }
+		if (!canvas.freeDrawingBrush) {
+			canvas.freeDrawingBrush = new fabric.PencilBrush(canvas);
+		}
 
-    canvas.discardActiveObject();
-    canvas.skipTargetFind = true;
+		canvas.discardActiveObject();
+		canvas.skipTargetFind = true;
 
-    canvas.freeDrawingBrush.color = brushColor;
+		canvas.freeDrawingBrush.color = brushColor;
 
-    canvas.freeDrawingBrush.width = brushWidth;
-  };
+		canvas.freeDrawingBrush.width = brushWidth;
+	};
 
-  const handleDrawAfter = useCallback(() => {
-    if (!canvas) return;
+	const handleDrawAfter = useCallback(() => {
+		if (!canvas) return;
 
-    // 关闭画笔模式
-    canvas.isDrawingMode = false;
+		// 关闭画笔模式
+		canvas.isDrawingMode = false;
 
-    canvas.skipTargetFind = false;
-  }, [canvas]);
+		canvas.skipTargetFind = false;
+	}, [canvas]);
 
-  const handleDrawShortCut = () => {
-    dispatch(changeMode('draw'));
-  };
+	const handleDrawShortCut = () => {
+		dispatch(changeMode("draw"));
+	};
 
-  return {
-    handleDrawShortCut,
-    handleDrawBefore,
-    handleDrawAfter,
-  };
+	return {
+		handleDrawShortCut,
+		handleDrawBefore,
+		handleDrawAfter,
+	};
 };
 
 export default useDrawActions;

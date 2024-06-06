@@ -11,7 +11,7 @@ import Sheet from "@mui/joy/Sheet";
 
 import { Typography } from "@mui/joy";
 
-import * as fabric from '../../../../../fabric';
+import * as fabric from '@boardxus/canvasx';
 import { useSelector } from "react-redux";
 import store, { RootState } from "../../redux/store";
 import { handleSetZoomFactor, handleWidgetMenuDisplay } from "../../redux/features/board.slice";

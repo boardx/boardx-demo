@@ -31,7 +31,7 @@ import { handleChangeFontFamily } from "../../redux/features/widgetMenu.slice";
 import { handleSetMenuFontWeight } from "../../redux/features/widgets.slice";
 import Sheet from "@mui/joy/Sheet";
 import Box from "@mui/joy/Box";
-import { ActiveSelection, XCanvas, XFile } from "../../../../../fabric";
+import { ActiveSelection, XCanvas, XFile } from "@boardxus/canvasx";
 
 
 export default function ({ canvas }: { canvas: XCanvas }) {

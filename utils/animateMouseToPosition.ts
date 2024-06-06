@@ -1,4 +1,4 @@
-import * as fabric from '../../../../fabric';
+import * as fabric from '@boardxus/canvasx';
 export async function animateMouseToPosition(userNo: any, left: any, top: any) {
   const currentLeft = parseInt($(`#${userNo}`).css('left'), 10);
   const currentTop = parseInt($(`#${userNo}`).css('top'), 10);

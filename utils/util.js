@@ -3,7 +3,7 @@ import imageCompression from "browser-image-compression";
 // import "../lib/toastr.min.css";
 // import toastr from "../lib/toastr.min";
 // import stc from "string-to-color";
-import * as fabric from "../../../../../fabric";
+import * as fabric from "@boardxus/canvasx";
 //todo
 import store from "../redux/store";
 //**Import i18n */

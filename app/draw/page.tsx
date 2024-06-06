@@ -1,6 +1,6 @@
 
 'use client';
-import * as fabric from '../../../../../fabric';
+import * as fabric from '@boardxus/canvasx';
 import { NextPage } from 'next';
 import { useRef, useCallback } from 'react';
 import { Canvas } from '../../components/Canvas';

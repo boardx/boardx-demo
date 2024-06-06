@@ -1,11 +1,11 @@
-import * as fabric from '../../../../fabric';
+import * as fabric from '@boardxus/canvasx';
 import React, { useEffect, useRef, useState } from 'react';
 import MiniCanvas from './preview/MiniCanvas';
 import showMenu from './widgetMenu/ShowMenu';
 
 const DEV_MODE = process.env.NODE_ENV === 'development';
 
-import { initializeCanvasEvents } from '../../../../fabric';
+import { initializeCanvasEvents } from '@boardxus/canvasx';
 import WidgetMenu from './widgetMenu/WidgetMenu';
 import MenuBar from './boardMenu/MenuBar';
 import { BoardService } from '../services';

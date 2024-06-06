@@ -1,13 +1,13 @@
 
 'use client';
-import * as fabric from '../../../../../fabric';
+import * as fabric from '@boardxus/canvasx';
 import { NextPage } from 'next';
 import { useRef, useCallback } from 'react';
 import { Canvas } from '../../components/Canvas';
 
 // import { RectNotes } from '../../../../src/shapes/RectNotes';
 
-import { XURL } from '../../../../../fabric';
+import { XURL } from '@boardxus/canvasx';
 
 const IndexPage: NextPage = () => {
     const ref = useRef<fabric.XCanvas>(null);
