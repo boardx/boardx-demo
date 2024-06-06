@@ -14,9 +14,9 @@ import { changeMode } from '../redux/features/mode.slice';
 import store from '../redux/store';
 import useLineActions from '../components/boardMenu/modeHandlers/useLineActions';
 
-// declare global {
-//   var canvas: fabric.XCanvas | undefined;
-// }
+declare global {
+  var canvas: fabric.XCanvas | undefined;
+}
 
 export const Canvas = React.forwardRef<
   fabric.XCanvas,

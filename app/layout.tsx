@@ -1,10 +1,8 @@
-'use client'
-import 'bootstrap/dist/css/bootstrap.min.css';
+'use client';
 import '../index.css';
 import Head from 'next/head';
 // import Link from 'next/link';
-import { Container, Navbar } from 'react-bootstrap';
-import { Divider, Link, Sheet } from '@mui/joy';
+import { Divider, Link, Sheet, Typography } from '@mui/joy';
 
 import { Providers } from "../redux/provider";
 
@@ -21,11 +19,11 @@ export default function MyApp({ children }: { children: React.ReactNode }) {
             </Head>
             <body>
                 <Providers>
-                    <Navbar bg="light">
-                        <Container>
-                            <Navbar.Brand>
+                    <Sheet bg="light">
+                        <Sheet>
+                            <Typography>
                                 CanvasX Demo
-                            </Navbar.Brand>
+                            </Typography>
                             <Sheet sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'start', gap: '10px' }}>
                                 <Link
 
@@ -102,8 +100,8 @@ export default function MyApp({ children }: { children: React.ReactNode }) {
                                     VIEWPORT
                                 </Link>
                             </Sheet>
-                        </Container>
-                    </Navbar>
+                        </Sheet>
+                    </Sheet>
                     {children}
                 </Providers>
             </body>
