@@ -19,7 +19,7 @@ export default function MyApp({ children }: { children: React.ReactNode }) {
             </Head>
             <body>
                 <Providers>
-                    <Sheet bg="light">
+                    <Sheet>
                         <Sheet>
                             <Typography>
                                 CanvasX Demo
