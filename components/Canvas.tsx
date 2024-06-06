@@ -152,7 +152,7 @@ export const Canvas = React.forwardRef<
     resizeObserver.observe(document.documentElement);
 
     //@ts-ignore
-    DEV_MODE && (window.canvas = canvasInstance);
+    (window.canvas = canvasInstance);
 
     if (typeof ref === 'function') {
       ref(canvasInstance);
@@ -200,7 +200,7 @@ export const Canvas = React.forwardRef<
       resizeObserver.unobserve(document.documentElement);
       resizeObserver.disconnect();
       //@ts-ignore
-      DEV_MODE && delete window.canvas;
+      delete window.canvas;
 
       if (typeof ref === 'function') {
         ref(null);
