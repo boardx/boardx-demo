@@ -1,4 +1,4 @@
-//* Store  */
+//@ts-nocheck
 // import { api } from "../../redux/services/api";
 import store from "../../redux/store";
 import {

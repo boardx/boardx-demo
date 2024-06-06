@@ -6,11 +6,19 @@ import {
   LagerNoteSvg,
   CircleNoteSvg,
 } from "../../svg/widgetToolBarMenuSvg";
-import { NoteType } from "../../../definition/widget/widgetType";
+
 // import { updateStickNoteInfo } from '../../../redux/features/widget/stickNote'; //there has an error
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { stickyNoteColorSeriesOne } from "../../../utils/stickynoteColor";
+export enum NoteType {
+  RECT = 'rect',
+  SQUARE = 'square',
+  CIRCLE = 'circle',
+  TEXT = 'text'
+}
+
+
 
 const StickyNotes = (props: any) => {
   const noteColors = ["#FCEC8A", ...stickyNoteColorSeriesOne.slice(0, 7)];

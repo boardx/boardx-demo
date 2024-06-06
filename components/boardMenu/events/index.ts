@@ -663,7 +663,6 @@ export function calcControlPointOfObjectInActiveSelection(
 }
 
 export const createShapeNote = (target: any, iconType: any) => {
-	const canvas: any = BoardService.getInstance().getBoard();
 	const widget: any = {
 		angle: 0,
 		width: 1,
@@ -786,7 +785,7 @@ export function createShapeByIconTypeFunc(type: any) {
 			canvas.requestRenderAll();
 		});
 
-	let drawEnd$: any = mouseUp$.subscribe((e: any) => {
+	let drawEnd$: any = mouseUp$.subscribe(() => {
 		obj.left += obj.originX === "left" ? obj.width / 2 : (-1 * obj.width) / 2;
 
 		obj.top += obj.originY === "top" ? obj.height / 2 : (-1 * obj.height) / 2;

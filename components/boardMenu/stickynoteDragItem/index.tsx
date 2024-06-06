@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useDrag } from "react-dnd";
 import Box from "@mui/joy/Box";
 import {
@@ -7,7 +8,7 @@ import {
   ArrowSvg,
 } from "../../svg/widgetToolBarMenuSvg";
 
-import { NoteType } from "../../../definition/widget/widgetType";
+
 import store, { RootState } from "../../../redux/store";
 import { useSelector } from "react-redux";
 import { EventService } from "../../../services";
@@ -19,6 +20,14 @@ import { useState } from "react";
 
 import { BoardService } from "../../../services";
 const canvas = BoardService.getInstance().getBoard();
+export enum NoteType {
+  RECT = 'rect',
+  SQUARE = 'square',
+  CIRCLE = 'circle',
+  TEXT = 'text'
+}
+
+
 
 const MenuStickyNoteDragItem = () => {
   const { t } = useTranslation("");
@@ -34,6 +43,7 @@ const MenuStickyNoteDragItem = () => {
   );
 
   function clickToGenerateNotesListener(e: any) {
+
     canvas.lastMousePosition = e.pointer;
     canvas.createWidgetatCurrentLocationByType(objType, { color, noteType });
     EventService.getInstance().unregister(

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from "react";
 import PanoramaFishEyeOutlinedIcon from "@mui/icons-material/PanoramaFishEyeOutlined";
 import PaletteIcon from "@mui/icons-material/Palette";

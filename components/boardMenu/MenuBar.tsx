@@ -96,6 +96,7 @@ export function MenuBar() {
         break;
       case "stickNote":
         handleStickNoteBefore();
+        break;
       case "default":
         canvas?.exitConnectorMode();
         break;

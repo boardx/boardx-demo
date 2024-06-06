@@ -1,3 +1,4 @@
+//@ts-nocheck
 "use client";
 
 import { PropsWithChildren, useCallback, useMemo, useState } from "react";

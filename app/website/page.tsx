@@ -23,7 +23,7 @@ const IndexPage: NextPage = () => {
             // const textValue = 'CanvasX Demo';
 
 
-            const website = new XURL({
+            const website = new XURL('https://files.boardx.us/beBT5B83vbXnsw7R5/ibQuarEwbKjEXL2pL/yBRJGAJKNN3TbKiW2/images/bigPic/5VSSmja6yynbsc3c.png', {
                 top: 220,
                 left: 200,
                 fileName: 'EOS Worldwide',
@@ -36,7 +36,7 @@ const IndexPage: NextPage = () => {
             canvas.add(website);
 
 
-            const website3 = new XURL({
+            const website3 = new XURL('https://www.boardx.us/content/images/size/w1000/2024/06/image-1.png', {
                 top: 220,
                 left: 800,
                 fileName: 'design thinking',
@@ -48,7 +48,7 @@ const IndexPage: NextPage = () => {
 
             canvas.add(website3);
 
-            const website2 = new XURL({
+            const website2 = new XURL('https://www.boardx.us', {
                 top: 220,
                 left: 500,
                 fileName: 'no preview image',
