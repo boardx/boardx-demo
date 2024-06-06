@@ -14,12 +14,12 @@ const IndexPage: NextPage = () => {
 
     const onLoad = useCallback(
         async (canvas: fabric.XCanvas) => {
-            canvas.setDimensions({
-                width: document.documentElement.clientWidth
-                ,
-                height: document.documentElement.clientHeight
-                    - 60,
-            });
+            // canvas.setDimensions({
+            //     width: document.documentElement.clientWidth
+            //     ,
+            //     height: document.documentElement.clientHeight
+            //         - 60,
+            // });
             // const textValue = 'CanvasX Demo';
 
 

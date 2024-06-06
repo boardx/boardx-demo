@@ -14,12 +14,12 @@ const IndexPage: NextPage = () => {
 
     const onLoad = useCallback(
         (canvas: fabric.XCanvas) => {
-            canvas.setDimensions({
-                width: document.documentElement.clientWidth
-                ,
-                height: document.documentElement.clientHeight
-                    - 60,
-            });
+            // canvas.setDimensions({
+            //     width: document.documentElement.clientWidth
+            //     ,
+            //     height: document.documentElement.clientHeight
+            //         - 60,
+            // });
             enum FileEmum {
                 DOC = 'doc',
                 DOCX = 'docx',
