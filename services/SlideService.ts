@@ -1,10 +1,9 @@
-import FileService from "./FileService";
+// import FileService from "./FileService";
 import UtilityService from "./UtilityService";
 import store from "../redux/store";
 import { handleSetSlideCapture } from "../redux/features/board.slice";
 import * as fabric from "@boardxus/canvasx";
 import BoardService from "./board/BoardService";
-// import $ from 'jquery';
 
 export default class SlideService {
 	static service: SlideService;
@@ -193,9 +192,9 @@ export default class SlideService {
 		);
 
 		// Use the FileService to upload the file to the specified R2 path.
-		return await FileService.getInstance().uploadFileToR2Async(
-			r2UploadPath,
-			file
-		);
+		// return await FileService.getInstance().uploadFileToR2Async(
+		// 	r2UploadPath,
+		// 	file
+		// );
 	}
 }

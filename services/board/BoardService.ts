@@ -18,7 +18,7 @@ import {
 //* Services  */
 
 import EventService from "../EventService";
-import FileService from "../FileService";
+// import FileService from "../FileService";
 import UtilityService from "../UtilityService";
 
 //* Utils  */
@@ -346,54 +346,46 @@ export default class BoardService {
 	 * Asynchronously updates the whiteboard's thumbnail image from captured data.
 	 */
 	async updateWhiteboardThumbnailOutSide() {
-		try {
-			// Get the captured data URL from the store.
-			const dataUrl = store.getState().board.captureThumbnail;
-
-			// Convert the data URL to a Blob object.
-			// @ts-ignore
-			const originalFile = await Util.dataURIToBlob(dataUrl);
-
-			// Define compression options for the image.
-			const options = {
-				maxSizeMB: 1,
-				maxWidthOrHeight: 400,
-				useWebWorker: true,
-			};
-
-			// Compress the image.
-			// @ts-ignore
-			const file = await Util.compressImage(originalFile, options);
-
-			// Set the name of the compressed file.
-			file.name = store.getState().board.captureThumbnailBoardName + ".png";
-
-			// Get the upload path for R2.
-			const r2UploadPath = UtilityService.getInstance().getr2UploadPath(
-				store.getState().board.board
-			);
-
-			// Upload the compressed thumbnail image to R2.
-			const key: any = await FileService.getInstance().uploadThumbnailToR2Async(
-				r2UploadPath,
-				file
-			);
-
-			// Set the thumbnail source (URL) to the uploaded key.
-			const src = key;
-
-			// Update the current board with the new thumbnail information.
-			BoardService.getInstance().updateCurrentBoard({
-				thumbnail: src,
-				lastUpdateTime: Date.now(),
-				lastUpdateBy: store.getState().user.userInfo.userId,
-				lastUpdateThum: Date.now(),
-				lastUpdateByName: store.getState().user.userInfo.userName,
-			});
-		} catch (e) {
-			// Handle and log any errors that occur during the update process.
-			console.error("update whiteboard thumbnail err", e);
-		}
+		// try {
+		// 	// Get the captured data URL from the store.
+		// 	const dataUrl = store.getState().board.captureThumbnail;
+		// 	// Convert the data URL to a Blob object.
+		// 	// @ts-ignore
+		// 	const originalFile = await Util.dataURIToBlob(dataUrl);
+		// 	// Define compression options for the image.
+		// 	const options = {
+		// 		maxSizeMB: 1,
+		// 		maxWidthOrHeight: 400,
+		// 		useWebWorker: true,
+		// 	};
+		// 	// Compress the image.
+		// 	// @ts-ignore
+		// 	const file = await Util.compressImage(originalFile, options);
+		// 	// Set the name of the compressed file.
+		// 	file.name = store.getState().board.captureThumbnailBoardName + ".png";
+		// 	// Get the upload path for R2.
+		// 	const r2UploadPath = UtilityService.getInstance().getr2UploadPath(
+		// 		store.getState().board.board
+		// 	);
+		// 	// Upload the compressed thumbnail image to R2.
+		// 	const key: any = await FileService.getInstance().uploadThumbnailToR2Async(
+		// 		r2UploadPath,
+		// 		file
+		// 	);
+		// 	// Set the thumbnail source (URL) to the uploaded key.
+		// 	const src = key;
+		// 	// Update the current board with the new thumbnail information.
+		// 	BoardService.getInstance().updateCurrentBoard({
+		// 		thumbnail: src,
+		// 		lastUpdateTime: Date.now(),
+		// 		lastUpdateBy: store.getState().user.userInfo.userId,
+		// 		lastUpdateThum: Date.now(),
+		// 		lastUpdateByName: store.getState().user.userInfo.userName,
+		// 	});
+		// } catch (e) {
+		// 	// Handle and log any errors that occur during the update process.
+		// 	console.error("update whiteboard thumbnail err", e);
+		// }
 	}
 
 	/**

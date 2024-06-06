@@ -16,8 +16,6 @@ import {
   handleSetShapeSelected,
   handleSetTextSelected,
 } from "@/redux/features/widgets.slice";
-//@ts-ignore
-import $ from "jquery";
 
 const Util = {};
 const _URL = window.URL || window.webkitURL;
@@ -496,8 +494,8 @@ const generateUUID = () => {
 Util.getId = generateUUID;
 
 Util.animateMouseToPosition = async function (userNo, left, top) {
-  const currentLeft = parseInt($(`#${userNo}`).css("left"), 10);
-  const currentTop = parseInt($(`#${userNo}`).css("top"), 10);
+  const currentLeft = parseInt(document.getElementById(userNo).style.left, 10);
+  const currentTop = parseInt(document.getElementById(userNo).style.top, 10);
 
   await fabric.util.animate({
     startValue: 1,
@@ -506,8 +504,8 @@ Util.animateMouseToPosition = async function (userNo, left, top) {
     onChange(value) {
       const newLeft = currentLeft + ((left - currentLeft) * value) / 5;
       const newTop = currentTop + ((top - currentTop) * value) / 5;
-      $(`#${userNo}`).css("left", newLeft);
-      $(`#${userNo}`).css("top", newTop);
+      document.getElementById(userNo).style.left = `${newLeft}px`;
+      document.getElementById(userNo).style.top = `${newTop}px`;
     },
     easing: fabric.util.ease.easeInOutQuad,
     onComplete() { },
@@ -587,21 +585,6 @@ Util.encode = function (str) {
   return utf8;
 };
 
-Util.resizeCanvasAccordingtoWindowSize = function (offset = 0) {
-  const windowEl = $(window);
-  if (!_.isNumber(offset)) offset = 0;
-  const winWidth = windowEl.width() - offset;
-  const winHeight = windowEl.height();
-
-  if (canvas) {
-    canvas.setWidth(winWidth).setHeight(winHeight);
-  }
-  $(".canvas-container").css("width", winWidth);
-  $(".canvas-container").css("height", winHeight);
-  $(".canvas-top-info").css("width", winWidth);
-  $(".remote-viewport").height($(window).height());
-  $(".remote-viewport").width($(window).width());
-};
 
 Util.replaceAll = function (inStr, search, replace) {
   return inStr.split(search).join(replace);

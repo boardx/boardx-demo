@@ -6,8 +6,8 @@ import store, { RootState } from "../../redux/store";
 import { handleSetDropdownDisplayed } from "../../redux/features/widgets.slice";
 import { useSelector } from "react-redux";
 import { handleSetCurrentAlign } from "../../redux/features/board.slice";
-//@ts-ignore
-import $ from "jquery";
+
+
 import IconButton from "@mui/joy/IconButton";
 import Box from "@mui/joy/Box";
 import Button from "@mui/joy/Button";
@@ -84,7 +84,7 @@ export default function FormatAlign({
   const changeAlign = (e: any, alignment: any) => {
     const textAlign = alignment;
     const object = canvas.getActiveObject();
-    const menu = $("#notesMenu");
+    const menu = document.getElementById("notesMenu");
     let data = null;
     let group = null;
     if (canvas.getActiveObjects().length > 1) group = canvas.getActiveObject();
@@ -96,6 +96,7 @@ export default function FormatAlign({
     store.dispatch(handleSetCurrentAlign(textAlign));
 
     if (!object) {
+      //@ts-ignore
       return menu.hide();
     }
     // if (object) {

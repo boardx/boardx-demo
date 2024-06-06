@@ -1,6 +1,4 @@
-
 import { useTranslation } from "../../../services/i18n/client";
-
 import store from "../../../redux/store";
 import { handleSetCursorColorOfPen } from "../../../redux/features/board.slice";
 import {
@@ -8,46 +6,17 @@ import {
   handleSetArrowStroke,
 } from "../../../redux/features/widgets.slice";
 import Box from "@mui/joy/Box";
-//@ts-ignore
-import $ from "jquery";
-
 import { hexToRgbA, invertColor } from "./util";
 import { getBrushCursorWithColor } from "./util";
 import { BoardService } from "../../../services";
 
 export const stickyNoteColorSeriesOne = [
-  '#FCEC8A',
-  '#FFA930',
-  '#93F472',
-  '#A9EDF1',
-  '#23BFE7',
-  '#FF65A3',
-  '#919191',
-  '#F7F4E5',
-  '#354858',
-  '#HHHHHH'
+  '#FCEC8A', '#FFA930', '#93F472', '#A9EDF1', '#23BFE7', '#FF65A3', '#919191', '#F7F4E5', '#354858', '#HHHHHH'
 ];
 
 export const stickyNoteColorSeriesTwo = [
-  '#FFFFFF',
-  '#D4D4D4',
-  '#919191',
-  '#1F1F1F',
-  '#FCEC8A',
-  '#FFF740',
-  '#D5F692',
-  '#93F472',
-  '#FFA930',
-  '#E85E5E',
-  '#FF65A3',
-  '#B384BB',
-  '#7AFCFF',
-  '#A9EDF1',
-  '#23BFE7',
-  '#2897DD',
-  '#HHHHHH'
+  '#FFFFFF', '#D4D4D4', '#919191', '#1F1F1F', '#FCEC8A', '#FFF740', '#D5F692', '#93F472', '#FFA930', '#E85E5E', '#FF65A3', '#B384BB', '#7AFCFF', '#A9EDF1', '#23BFE7', '#2897DD', '#HHHHHH'
 ];
-
 
 export default function StandardColor(props: any) {
   const { t } = useTranslation("menu");
@@ -55,7 +24,6 @@ export default function StandardColor(props: any) {
   const type = props.objectType;
   let opacity = props.opacityValue;
   const setColor = props.setColor;
-  // const canvas: any = BoardService.getInstance().getBoard();
   let colorSelections: any = [];
 
   const colorSeries = (objectType: any) => {
@@ -155,75 +123,21 @@ export default function StandardColor(props: any) {
     return hex.toLocaleUpperCase();
   };
 
-  // Function onClickStandardColor()
-  //
-  // Object Fields:
-  //
-  // 1. backgroundColor: backgroundColor, shapeBackgroundColor
-  // 2. fill : fillColor, fontColor, oldShapeBackgroundColor
-  // 3. stroke : strokeColor, shapeBorderColor
-  // 4. canvas.notesDrawCanvas.freeDrawingBrush.color
-  // 5. canvas.freeDrawingBrush.color
-
-  // a. WBTitle/XText: backgroundColor--1, fontColor--2
-  // b. WBCircleNote/WBRectNote: backgroundColor--1, fontColor--2
-  // c. WBRectNoteDraw: backgroundColor--1, noteDrawColor--4
-  // d. WBPath: background--1, fillColor--2, strokeColor--3, drawColor--5
-  // e. (OLD New) WBTriangle/WBRectPanel/WBCircle(Shapes): oldShapeBackgroundColor--2, shapeBorderColor--3
-  // e. (Stop using) WBTriangle/WBRectPanel/WBCircle(Shapes): shapeBackgroundColor--1, shapeBorderColor --3, fontColor--2
-  // e. (New)XShapeNotes:: shapeBackgroundColor--1, shapeBorderColor --3, fontColor--2
-  // f. XConnector: strokeColor--3
-  // ----------------------------------------------
-  // g. WBPolygon (onClickStandardPolylineArrowColor--color assigned to both stroke & fill) & WBModel:No longer in use.
-
   const onClickStandardColor = (e: any) => {
-    if (type === "backgroundColor" || type === "shapeBackgroundColor") {
-      // backgroundColor --1
-      onClickStandardBackgroundColor(e);
-    } else if (
-      type === "fontColor" ||
-      type === "fillColor" ||
-      type === "oldShapeBackgroundColor"
-    ) {
-      // fill --2
-      onClickStandardFillColor(e);
-    } else if (type === "strokeColor" || type === "shapeBorderColor") {
-      // stroke --3
-      onClickStandardStrokeColor(e);
-    } else if (type === "noteDrawColor") {
-      // canvas.notesDrawCanvas.freeDrawingBrush.color --4
-      onClickStandardNoteDrawColor(e);
-    } else if (type === "drawColor") {
-      // canvas.freeDrawingBrush.color --5
-      onClickStandardDrawColor(e);
-    }
+    const currentTarget = e.currentTarget;
+    const siblings = Array.from(currentTarget.parentNode.children);
 
-    if (store.getState().widgets.objectWidgetStatusChange) {
-      store.dispatch(handleSetObjectWidgetStatusChange(false));
-    } else {
-      store.dispatch(handleSetObjectWidgetStatusChange(true));
-    }
+    siblings.forEach((sibling: any) => {
+      sibling.classList.remove("selected");
+      sibling.children[0].style.display = "none";
+    });
 
-    if (type !== "drawColor") {
-      props.clickMe();
-    }
-  };
+    currentTarget.classList.add("selected");
+    currentTarget.children[0].style.display = "block";
 
-  // Color -- 5
-  const onClickStandardDrawColor = (e: any) => {
-    $(".roundColorSelection").children().hide();
-
-    $(e.currentTarget).siblings(".selected").removeClass("selected");
-    $(e.currentTarget).addClass("selected");
-
-    $(e.currentTarget).siblings().children().hide();
-    $(e.currentTarget).children().show();
-
-    const inputColor = $(e.currentTarget).data("color");
+    const inputColor = currentTarget.getAttribute("data-color");
     props.clickMe(inputColor);
     if (inputColor === "#HHH") {
-      // abort drawing if color is null
-      // Util.Msg.info(t("board.color.transparentNotAallowed"));
       return;
     }
     if (!opacity) {
@@ -241,73 +155,25 @@ export default function StandardColor(props: any) {
     canvas.requestRenderAll();
   };
 
-  // Color -- 4
-  const onClickStandardNoteDrawColor = (e: any) => {
-    $(".roundColorSelection").children().hide();
-
-    $(e.currentTarget).siblings(".selected").removeClass("selected");
-    $(e.currentTarget).addClass("selected");
-
-    $(e.currentTarget).siblings().children().hide();
-    $(e.currentTarget).children().show();
-
-    const inputColor = $(e.currentTarget).data("color");
-
-    setColor(inputColor);
-
-    if (inputColor === "#HHH") {
-      // abort drawing if color is null
-      // Util.Msg.info(t("board.color.transparentNotAallowed"));
-      return;
-    }
-    if (!opacity) {
-      opacity = 100;
-    }
-    const strokeColor = hexToRgbA(inputColor, opacity / 100);
-    const object = canvas.getActiveObject();
-    if (!object) {
-      return;
-    }
-
-    let group = null;
-    if (canvas.getActiveObjects().length > 1) group = canvas.getActiveObject();
-
-    if (group) {
-      // Util.Msg.info(t("board.color.forOneStickyNote"));
-      return;
-    }
-
-    object.set("stroke", strokeColor);
-    if (
-      canvas &&
-      canvas.notesDrawCanvas &&
-      canvas.notesDrawCanvas.freeDrawingBrush
-    ) {
-      canvas.notesDrawCanvas.freeDrawingBrush.color = strokeColor;
-    }
-    object.saveData("MODIFIED", ["stroke"]);
-
-    canvas.requestRenderAll();
-  };
-
-  // Color -- 3
   const onClickStandardStrokeColor = (e: any) => {
-    $(".roundColorSelection").children().hide();
+    const currentTarget = e.currentTarget;
+    const siblings = Array.from(currentTarget.parentNode.children);
 
-    $(e.currentTarget).siblings(".selected").removeClass("selected");
-    $(e.currentTarget).addClass("selected");
+    siblings.forEach((sibling: any) => {
+      sibling.classList.remove("selected");
+      sibling.children[0].style.display = "none";
+    });
 
-    $(e.currentTarget).siblings().children().hide();
-    $(e.currentTarget).children().show();
+    currentTarget.classList.add("selected");
+    currentTarget.children[0].style.display = "block";
 
-    const inputColor = $(e.currentTarget).data("color");
+    const inputColor = currentTarget.getAttribute("data-color");
     setColor(inputColor);
     let strokeColor;
     if (!opacity) {
       opacity = 100;
     }
     if (inputColor === "#HHH") {
-      // abort drawing if color is null
       strokeColor = null;
     } else {
       strokeColor = hexToRgbA(inputColor, opacity / 100);
@@ -322,7 +188,6 @@ export default function StandardColor(props: any) {
     if (canvas.getActiveObjects().length > 1) group = canvas.getActiveObject();
 
     if (!group) {
-      // If only one object is selected
       object.set("stroke", strokeColor);
       object.saveData("MODIFIED", ["stroke"]);
 
@@ -345,23 +210,25 @@ export default function StandardColor(props: any) {
     canvas.requestRenderAll();
   };
 
-  // Color -- 2
   const onClickStandardFillColor = (e: any) => {
-    $(e.currentTarget).siblings(".selected").removeClass("selected");
-    $(e.currentTarget).addClass("selected");
+    const currentTarget = e.currentTarget;
+    const siblings = Array.from(currentTarget.parentNode.children);
 
-    // show and hide the red circle -2
-    $(e.currentTarget).siblings().children().hide();
-    $(e.currentTarget).children().show();
+    siblings.forEach((sibling: any) => {
+      sibling.classList.remove("selected");
+      sibling.children[0].style.display = "none";
+    });
 
-    const inputColor = $(e.currentTarget).data("color");
+    currentTarget.classList.add("selected");
+    currentTarget.children[0].style.display = "block";
+
+    const inputColor = currentTarget.getAttribute("data-color");
     setColor(inputColor);
     let fill;
     if (!opacity) {
       opacity = 100;
     }
     if (inputColor === "#HHH") {
-      // abort drawing if color is null
       fill = null;
     } else {
       fill = hexToRgbA(inputColor, opacity / 100);
@@ -377,13 +244,11 @@ export default function StandardColor(props: any) {
     }
 
     if (!group) {
-      // if it is single object update
       object.set("fill", fill);
       object.saveData("MODIFIED", ["fill"]);
     }
 
     if (group && group._objects) {
-      // if it is group object update
       group._objects.forEach((obj: any) => {
         obj.set("fill", fill);
       });
@@ -395,20 +260,21 @@ export default function StandardColor(props: any) {
       canvas.getActiveObject().hiddenTextarea.focus();
   };
 
-  // Color -- 1
   const onClickStandardBackgroundColor = (e: any) => {
     e.preventDefault();
 
-    $(".roundColorSelection").children().hide();
+    const currentTarget = e.currentTarget;
+    const siblings = Array.from(currentTarget.parentNode.children);
 
-    $(e.currentTarget).siblings(".selected").removeClass("selected");
-    $(e.currentTarget).addClass("selected");
+    siblings.forEach((sibling: any) => {
+      sibling.classList.remove("selected");
+      sibling.children[0].style.display = "none";
+    });
 
-    // show and hide the red circle -2
-    $(e.currentTarget).siblings().children().hide();
-    $(e.currentTarget).children().show();
+    currentTarget.classList.add("selected");
+    currentTarget.children[0].style.display = "block";
 
-    const inputColor = $(e.currentTarget).data("color");
+    const inputColor = currentTarget.getAttribute("data-color");
     setColor(inputColor);
     let backgroundColor;
     if (!opacity) {
@@ -416,7 +282,6 @@ export default function StandardColor(props: any) {
     }
 
     if (inputColor === "#HHH") {
-      // abort drawing if color is null
       backgroundColor = null;
     } else {
       backgroundColor = hexToRgbA(inputColor, opacity / 100);
@@ -431,7 +296,6 @@ export default function StandardColor(props: any) {
     if (canvas.getActiveObjects().length > 1) group = canvas.getActiveObject();
 
     if (!group) {
-      // Only one object is selected
       let fontColor;
       if (backgroundColor) {
         if (object.objType == "XRectNotes") {

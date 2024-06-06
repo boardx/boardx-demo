@@ -1,3 +1,4 @@
+'use client';
 import { useMemo, useState, useEffect } from "react";
 import Tooltip from "@mui/joy/Tooltip";
 import Popover from "@mui/material/Popover";
@@ -43,6 +44,8 @@ const MenuDrawing = () => {
     [modeType]
   );
 
+  const [anchorEl, setAnchorEl] = useState(null);
+
   function handleCloseDrawMode() {
     dispatch(changeMode("default"));
   }
@@ -50,6 +53,10 @@ const MenuDrawing = () => {
   function toggleColorPad() {
     setColorPadOpen(!colorPadOpen);
   }
+
+  useEffect(() => {
+    setAnchorEl(document.getElementById("drawColorPopupButton"));
+  }, []);
 
   useEffect(() => {
     if (canvas && canvas.freeDrawingBrush)
@@ -224,7 +231,7 @@ const MenuDrawing = () => {
             />
           </IconButton>
           <Popover
-            anchorEl={document?.getElementById("drawColorPopupButton")}
+            anchorEl={anchorEl}
             anchorOrigin={{ vertical: "top", horizontal: "center" }}
             sx={{
               paper: {
